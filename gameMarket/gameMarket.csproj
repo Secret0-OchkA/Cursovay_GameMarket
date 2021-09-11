@@ -107,6 +107,9 @@
     <EmbeddedResource Include="Form_Admin.resx">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_GamePage.resx">
+      <DependentUpon>Form_GamePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_SignIn.resx">
       <DependentUpon>Form_SignIn.cs</DependentUpon>
     </EmbeddedResource>
