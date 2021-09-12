@@ -16,7 +16,7 @@ namespace gameMarket
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_GamePage());
+            Application.Run(new Form_Library());
         }
     }
 }
