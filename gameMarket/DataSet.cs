@@ -4,7 +4,7 @@
 
     partial class DataSet
     {
-        partial class DataTable1DataTable
+        partial class LibraryDataTable
         {
         }
     }
@@ -12,6 +12,10 @@
 
 namespace gameMarket.DataSetTableAdapters
 {
+    partial class LibraryTableAdapter
+    {
+    }
+
     partial class PicturesTableAdapter
     {
     }

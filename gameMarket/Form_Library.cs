@@ -21,15 +21,23 @@ namespace gameMarket
 
         private void Form_Library_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.DataTable1". При необходимости она может быть перемещена или удалена.
-            this.dataTable1TableAdapter.Fill(this.dataSet.DataTable1);
-            DataTable dt = dataTable1TableAdapter.GetDataBy("admin");
-            dataGridView1.DataSource = dt;
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.placemarks". При необходимости она может быть перемещена или удалена.
+            this.placemarksTableAdapter.Fill(this.dataSet.placemarks);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.Library". При необходимости она может быть перемещена или удалена.
+            this.libraryTableAdapter.Fill(this.dataSet.Library);
+
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void comboBox_placemarker_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataTable dt = libraryTableAdapter.GetData();
+            if (comboBox_placemarker.SelectedIndex != 0)
+            {
+                // если none то все игры
+                dt = libraryTableAdapter.GetDataBy_placemarkers("makr1");
+            }
 
+            libraryDataGridView.DataSource = dt;
         }
     }
 }

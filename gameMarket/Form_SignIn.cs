@@ -17,6 +17,12 @@ namespace gameMarket
             InitializeComponent();
         }
 
+        private enum Role
+        {
+            ADMIN,
+            USER
+        }
+
         private readonly int maxLengthPassword = 16;
 
         private void textBox_Login_TextChanged(object sender, EventArgs e)
@@ -44,11 +50,46 @@ namespace gameMarket
         {
             string userLogin = textBox_Login.Text;
             string userPassword = textBox_Password.Text;
-            bool exist = (bool)usersTableAdapter1.ExistUser(userLogin, userPassword);
+
+            bool exist = Convert.ToBoolean(usersTableAdapter1.ExistUser(userLogin));
+
             if(exist)
             {
+                DataSet.usersDataTable user = new DataSet.usersDataTable();
+                usersTableAdapter1.Fill_GetUser(user, userLogin);
 
+                string userBd = user.Rows[0][0].ToString(); //login
+                string passwordBd = user.Rows[0][1].ToString(); //password
+                Role role = (Role)Convert.ToInt32(user.Rows[0][2].ToString()); //role
+
+                if (userLogin.Equals(userBd) && userPassword.Equals(passwordBd))
+                {
+                    switch (role)
+                    {
+                        case Role.ADMIN:
+                            Form_Admin form_Admin = new Form_Admin(this);
+                            form_Admin.Show();
+
+                            break;
+                        case Role.USER:
+                            Form_User form_User = new Form_User(this);
+                            form_User.Show();
+                            break;
+                        default:
+                            break;
+                    }
+
+                    Hide();
+                    textBox_Login.Text = textBox_Password.Text = string.Empty;
+                }
+                   
             }
+        }
+
+        private void button_SignUp_Click(object sender, EventArgs e)
+        {
+            Form_SignUp form_SignUp = new Form_SignUp(this);
+            Hide();
         }
     }
 }

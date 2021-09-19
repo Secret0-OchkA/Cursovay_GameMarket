@@ -29,6 +29,7 @@ namespace ConnectSQLServer
                 Console.WriteLine("Error: " + e.Message);
             }
 
+            conn?.Close();
             Console.Read();
         }
     }

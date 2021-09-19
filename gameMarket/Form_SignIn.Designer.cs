@@ -58,6 +58,7 @@ namespace gameMarket
             this.button_SignUp.TabIndex = 1;
             this.button_SignUp.Text = "Sign up";
             this.button_SignUp.UseVisualStyleBackColor = true;
+            this.button_SignUp.Click += new System.EventHandler(this.button_SignUp_Click);
             // 
             // textBox_Login
             // 

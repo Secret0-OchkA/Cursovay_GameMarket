@@ -29,8 +29,6 @@ namespace gameMarket
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_Login = new System.Windows.Forms.Label();
-            this.textBox_Login = new System.Windows.Forms.TextBox();
             this.textBox_Password = new System.Windows.Forms.TextBox();
             this.label_Password = new System.Windows.Forms.Label();
             this.textBox_PasswordRepeat = new System.Windows.Forms.TextBox();
@@ -41,29 +39,12 @@ namespace gameMarket
             this.button_SignUp = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.checkBox_ShowPassword = new System.Windows.Forms.CheckBox();
+            this.usersTableAdapter1 = new gameMarket.DataSetTableAdapters.usersTableAdapter();
             this.SuspendLayout();
-            // 
-            // label_Login
-            // 
-            this.label_Login.AutoSize = true;
-            this.label_Login.Location = new System.Drawing.Point(12, 54);
-            this.label_Login.Name = "label_Login";
-            this.label_Login.Size = new System.Drawing.Size(80, 13);
-            this.label_Login.TabIndex = 0;
-            this.label_Login.Text = "Enter your login";
-            // 
-            // textBox_Login
-            // 
-            this.textBox_Login.Location = new System.Drawing.Point(135, 51);
-            this.textBox_Login.MaxLength = 100;
-            this.textBox_Login.Name = "textBox_Login";
-            this.textBox_Login.Size = new System.Drawing.Size(141, 20);
-            this.textBox_Login.TabIndex = 1;
-            this.textBox_Login.TextChanged += new System.EventHandler(this.textBox_Login_TextChanged);
             // 
             // textBox_Password
             // 
-            this.textBox_Password.Location = new System.Drawing.Point(135, 77);
+            this.textBox_Password.Location = new System.Drawing.Point(135, 50);
             this.textBox_Password.MaxLength = 100;
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.Size = new System.Drawing.Size(141, 20);
@@ -74,7 +55,7 @@ namespace gameMarket
             // label_Password
             // 
             this.label_Password.AutoSize = true;
-            this.label_Password.Location = new System.Drawing.Point(12, 80);
+            this.label_Password.Location = new System.Drawing.Point(12, 53);
             this.label_Password.Name = "label_Password";
             this.label_Password.Size = new System.Drawing.Size(86, 13);
             this.label_Password.TabIndex = 2;
@@ -82,7 +63,7 @@ namespace gameMarket
             // 
             // textBox_PasswordRepeat
             // 
-            this.textBox_PasswordRepeat.Location = new System.Drawing.Point(135, 103);
+            this.textBox_PasswordRepeat.Location = new System.Drawing.Point(135, 76);
             this.textBox_PasswordRepeat.MaxLength = 100;
             this.textBox_PasswordRepeat.Name = "textBox_PasswordRepeat";
             this.textBox_PasswordRepeat.Size = new System.Drawing.Size(141, 20);
@@ -93,7 +74,7 @@ namespace gameMarket
             // label_PasswordRepeat
             // 
             this.label_PasswordRepeat.AutoSize = true;
-            this.label_PasswordRepeat.Location = new System.Drawing.Point(12, 106);
+            this.label_PasswordRepeat.Location = new System.Drawing.Point(12, 79);
             this.label_PasswordRepeat.Name = "label_PasswordRepeat";
             this.label_PasswordRepeat.Size = new System.Drawing.Size(113, 13);
             this.label_PasswordRepeat.TabIndex = 4;
@@ -121,34 +102,35 @@ namespace gameMarket
             // 
             this.label_Error.AutoSize = true;
             this.label_Error.ForeColor = System.Drawing.Color.Red;
-            this.label_Error.Location = new System.Drawing.Point(12, 134);
+            this.label_Error.Location = new System.Drawing.Point(12, 106);
             this.label_Error.Name = "label_Error";
-            this.label_Error.Size = new System.Drawing.Size(34, 13);
+            this.label_Error.Size = new System.Drawing.Size(0, 13);
             this.label_Error.TabIndex = 8;
-            this.label_Error.Text = "Errors";
             // 
             // button_SignUp
             // 
-            this.button_SignUp.Location = new System.Drawing.Point(12, 281);
+            this.button_SignUp.Location = new System.Drawing.Point(12, 106);
             this.button_SignUp.Name = "button_SignUp";
             this.button_SignUp.Size = new System.Drawing.Size(75, 23);
             this.button_SignUp.TabIndex = 11;
             this.button_SignUp.Text = "Sign up";
             this.button_SignUp.UseVisualStyleBackColor = true;
+            this.button_SignUp.Click += new System.EventHandler(this.button_SignUp_Click);
             // 
             // button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(305, 281);
+            this.button_Cancel.Location = new System.Drawing.Point(305, 106);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.button_Cancel.TabIndex = 12;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // checkBox_ShowPassword
             // 
             this.checkBox_ShowPassword.AutoSize = true;
-            this.checkBox_ShowPassword.Location = new System.Drawing.Point(282, 79);
+            this.checkBox_ShowPassword.Location = new System.Drawing.Point(282, 53);
             this.checkBox_ShowPassword.Name = "checkBox_ShowPassword";
             this.checkBox_ShowPassword.Size = new System.Drawing.Size(101, 17);
             this.checkBox_ShowPassword.TabIndex = 13;
@@ -156,11 +138,15 @@ namespace gameMarket
             this.checkBox_ShowPassword.UseVisualStyleBackColor = true;
             this.checkBox_ShowPassword.CheckedChanged += new System.EventHandler(this.checkBox_ShowPassword_CheckedChanged);
             // 
+            // usersTableAdapter1
+            // 
+            this.usersTableAdapter1.ClearBeforeFill = true;
+            // 
             // Form_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 313);
+            this.ClientSize = new System.Drawing.Size(392, 139);
             this.Controls.Add(this.checkBox_ShowPassword);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_SignUp);
@@ -171,19 +157,15 @@ namespace gameMarket
             this.Controls.Add(this.label_PasswordRepeat);
             this.Controls.Add(this.textBox_Password);
             this.Controls.Add(this.label_Password);
-            this.Controls.Add(this.textBox_Login);
-            this.Controls.Add(this.label_Login);
             this.Name = "Form_SignUp";
             this.Text = "Form_signUp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_SignUp_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label_Login;
-        private System.Windows.Forms.TextBox textBox_Login;
         private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Label label_Password;
         private System.Windows.Forms.TextBox textBox_PasswordRepeat;
@@ -194,5 +176,6 @@ namespace gameMarket
         private System.Windows.Forms.Button button_SignUp;
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.CheckBox checkBox_ShowPassword;
+        private DataSetTableAdapters.usersTableAdapter usersTableAdapter1;
     }
 }

@@ -15,9 +15,9 @@ namespace gameMarket
         /// функция которая выводит сообщение в Label, об неправильном ввоед текста в поля
         /// </summary>
         /// <param name="func">лямбда для условия true:вывод false:нет</param>
-        public static bool printErrorMsg<T, U>(Condition<T, U> func, T str1, U str2, string errorMsg, Label lb)
+        public static bool printErrorMsg<T, U>(Condition<T, U> func, T arg1, U arg2, string errorMsg, Label lb)
         {
-            if (func(str1, str2))
+            if (func(arg1, arg2))
             {
                 if (!lb.Text.Contains(errorMsg))
                 {
