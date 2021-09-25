@@ -16,7 +16,6 @@ namespace gameMarket
         {
             InitializeComponent();
             parent = form;
-            //openFileDialog1.Filter = "Файлы png|*.png|Файлы jpg|*.jpg";
             openFileDialog1.Filter = "Изображения|*.png;*.jpg";
         }
 
@@ -25,30 +24,29 @@ namespace gameMarket
         private string imageName;
         private string imagePath;
 
-        private void gamesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.gamesBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dataSet);
+        //private void gamesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.gamesBindingSource.EndEdit();
+        //    this.tableAdapterManager.UpdateAll(this.dataSet);
 
-        }
+        //}
 
-        private void gamesBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.gamesBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dataSet);
+        //private void gamesBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.gamesBindingSource.EndEdit();
+        //    this.tableAdapterManager.UpdateAll(this.dataSet);
 
-        }
+        //}
 
         private void Form_AddGame_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.servers". При необходимости она может быть перемещена или удалена.
             this.serversTableAdapter.Fill(this.dataSet.servers);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.gameStudios". При необходимости она может быть перемещена или удалена.
             this.gameStudiosTableAdapter.Fill(this.dataSet.gameStudios);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.games". При необходимости она может быть перемещена или удалена.
-            this.gamesTableAdapter.Fill(this.dataSet.games);
+            //this.gamesTableAdapter.Fill(this.dataSet.games);
 
         }
 
@@ -80,26 +78,30 @@ namespace gameMarket
 
         private void button_Add_Click(object sender, EventArgs e)
         {
+
             int gameStudio = (int)comboBox_Studio.SelectedValue;
-            string name = nameTextBox.Text;
+            string nameGame = nameTextBox.Text;
+            int serverId = (int)comboBox_Server.SelectedValue;
+            double price = (double)numericUpDown_Price.Value;
+
 
             try
             {
-                if (!imageName.Equals(string.Empty))
-                {
-                    int AddId = 0;
+                if (nameGame.Equals(string.Empty))
+                    throw new Exception("no game name");
 
-                    if (comboBox_Server.SelectedValue == null)
-                    {
-                        gamesTableAdapter.Game_Insert(gameStudio, name, null);
-                    }
-                    else
-                    {
-                        int server = (int)comboBox_Server.SelectedValue;
-                        AddId = gamesTableAdapter.Game_Insert(gameStudio, name, server);
-                    }
-                    picturesTableAdapter1.usp_ImportImage(AddId, "name", imagePath, imageName);
-                }
+                if (imageName == null)
+                    throw new Exception("no logo");
+
+                if (gamesTableAdapter.GetGameId(nameGame).HasValue)
+                    throw new Exception("this name is busy");
+
+                gamesTableAdapter.Game_Insert(gameStudio, nameGame, serverId, price);
+                
+                int addedGameId = (int)gamesTableAdapter.GetGameId(nameGame);
+                picturesTableAdapter1.usp_ImportImage(addedGameId, "name", imagePath, imageName);
+
+                parent.Refresh();
 
                 Close();
             }
@@ -107,6 +109,11 @@ namespace gameMarket
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

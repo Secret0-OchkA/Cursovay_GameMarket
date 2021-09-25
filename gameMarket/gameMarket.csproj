@@ -71,88 +71,73 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form_AddGame.cs">
+    <Compile Include="Forms\Form_AddGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_AddGame.Designer.cs">
+    <Compile Include="Forms\Form_AddGame.Designer.cs">
       <DependentUpon>Form_AddGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Admin.cs">
+    <Compile Include="Forms\Form_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Admin.Designer.cs">
+    <Compile Include="Forms\Form_Admin.Designer.cs">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Buy.cs">
+    <Compile Include="Forms\Form_ChangePlacemark.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Buy.Designer.cs">
-      <DependentUpon>Form_Buy.cs</DependentUpon>
+    <Compile Include="Forms\Form_ChangePlacemark.Designer.cs">
+      <DependentUpon>Form_ChangePlacemark.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_GamePage.cs">
+    <Compile Include="Forms\Form_Library.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_GamePage.Designer.cs">
-      <DependentUpon>Form_GamePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_Library.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Library.Designer.cs">
+    <Compile Include="Forms\Form_Library.Designer.cs">
       <DependentUpon>Form_Library.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_SignIn.cs">
+    <Compile Include="Forms\Form_SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_SignIn.Designer.cs">
+    <Compile Include="Forms\Form_SignIn.Designer.cs">
       <DependentUpon>Form_SignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_SignUp.cs">
+    <Compile Include="Forms\Form_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_SignUp.Designer.cs">
+    <Compile Include="Forms\Form_SignUp.Designer.cs">
       <DependentUpon>Form_SignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_User.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_User.Designer.cs">
-      <DependentUpon>Form_User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PrintLableMsg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form_AddGame.resx">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <EmbeddedResource Include="Forms\Form_AddGame.resx">
       <DependentUpon>Form_AddGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Admin.resx">
+    <EmbeddedResource Include="Forms\Form_Admin.resx">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_GamePage.resx">
-      <DependentUpon>Form_GamePage.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_ChangePlacemark.resx">
+      <DependentUpon>Form_ChangePlacemark.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Library.resx">
+    <EmbeddedResource Include="Forms\Form_Library.resx">
       <DependentUpon>Form_Library.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_SignIn.resx">
+    <EmbeddedResource Include="Forms\Form_SignIn.resx">
       <DependentUpon>Form_SignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_SignUp.resx">
+    <EmbeddedResource Include="Forms\Form_SignUp.resx">
       <DependentUpon>Form_SignUp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_User.resx">
-      <DependentUpon>Form_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="DataSet.xsc">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
@@ -189,11 +174,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\8a36117830713c529bb94c295c5255b5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\8a36117830713c529bb94c295c5255b51.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -59,25 +59,5 @@ namespace gameMarket.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _8a36117830713c529bb94c295c5255b5 {
-            get {
-                object obj = ResourceManager.GetObject("8a36117830713c529bb94c295c5255b5", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _8a36117830713c529bb94c295c5255b51 {
-            get {
-                object obj = ResourceManager.GetObject("8a36117830713c529bb94c295c5255b51", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

@@ -29,6 +29,7 @@ namespace gameMarket
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button_SignIn = new System.Windows.Forms.Button();
             this.button_SignUp = new System.Windows.Forms.Button();
             this.textBox_Login = new System.Windows.Forms.TextBox();
@@ -38,6 +39,7 @@ namespace gameMarket
             this.checkBox_ShowPassword = new System.Windows.Forms.CheckBox();
             this.label_Error = new System.Windows.Forms.Label();
             this.usersTableAdapter1 = new gameMarket.DataSetTableAdapters.usersTableAdapter();
+            this.timer_ClearErrors = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button_SignIn
@@ -67,7 +69,6 @@ namespace gameMarket
             this.textBox_Login.Size = new System.Drawing.Size(225, 20);
             this.textBox_Login.TabIndex = 2;
             this.textBox_Login.Tag = "";
-            this.textBox_Login.TextChanged += new System.EventHandler(this.textBox_Login_TextChanged);
             // 
             // textBox_Password
             // 
@@ -76,7 +77,6 @@ namespace gameMarket
             this.textBox_Password.Size = new System.Drawing.Size(225, 20);
             this.textBox_Password.TabIndex = 3;
             this.textBox_Password.UseSystemPasswordChar = true;
-            this.textBox_Password.TextChanged += new System.EventHandler(this.textBox_Password_TextChanged);
             // 
             // label_Login
             // 
@@ -113,13 +113,17 @@ namespace gameMarket
             this.label_Error.ForeColor = System.Drawing.Color.Red;
             this.label_Error.Location = new System.Drawing.Point(21, 80);
             this.label_Error.Name = "label_Error";
-            this.label_Error.Size = new System.Drawing.Size(34, 13);
+            this.label_Error.Size = new System.Drawing.Size(0, 13);
             this.label_Error.TabIndex = 15;
-            this.label_Error.Text = "Errors";
             // 
             // usersTableAdapter1
             // 
             this.usersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // timer_ClearErrors
+            // 
+            this.timer_ClearErrors.Interval = 2000;
+            this.timer_ClearErrors.Tick += new System.EventHandler(this.timer_ClearErrors_Tick);
             // 
             // Form_SignIn
             // 
@@ -153,6 +157,7 @@ namespace gameMarket
         private System.Windows.Forms.CheckBox checkBox_ShowPassword;
         private System.Windows.Forms.Label label_Error;
         private DataSetTableAdapters.usersTableAdapter usersTableAdapter1;
+        private System.Windows.Forms.Timer timer_ClearErrors;
     }
 }
 

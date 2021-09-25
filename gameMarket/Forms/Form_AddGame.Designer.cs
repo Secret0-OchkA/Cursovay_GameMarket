@@ -33,31 +33,35 @@ namespace gameMarket
             System.Windows.Forms.Label gameStudioIdLabel;
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label serverIdLabel;
+            System.Windows.Forms.Label priceLabel;
             this.dataSet = new gameMarket.DataSet();
             this.gamesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gamesTableAdapter = new gameMarket.DataSetTableAdapters.gamesTableAdapter();
             this.tableAdapterManager = new gameMarket.DataSetTableAdapters.TableAdapterManager();
             this.gameStudiosTableAdapter = new gameMarket.DataSetTableAdapters.gameStudiosTableAdapter();
-            this.serversTableAdapter = new gameMarket.DataSetTableAdapters.serversTableAdapter();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_Studio = new System.Windows.Forms.ComboBox();
             this.gameStudiosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox_Server = new System.Windows.Forms.ComboBox();
-            this.serversBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button_SelectImage = new System.Windows.Forms.Button();
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.picturesTableAdapter1 = new gameMarket.DataSetTableAdapters.PicturesTableAdapter();
+            this.numericUpDown_Price = new System.Windows.Forms.NumericUpDown();
+            this.comboBox_Server = new System.Windows.Forms.ComboBox();
+            this.serversBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serversTableAdapter = new gameMarket.DataSetTableAdapters.serversTableAdapter();
             gameStudioIdLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             serverIdLabel = new System.Windows.Forms.Label();
+            priceLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gamesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameStudiosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Price)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serversBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +70,9 @@ namespace gameMarket
             gameStudioIdLabel.AutoSize = true;
             gameStudioIdLabel.Location = new System.Drawing.Point(12, 31);
             gameStudioIdLabel.Name = "gameStudioIdLabel";
-            gameStudioIdLabel.Size = new System.Drawing.Size(81, 13);
+            gameStudioIdLabel.Size = new System.Drawing.Size(69, 13);
             gameStudioIdLabel.TabIndex = 3;
-            gameStudioIdLabel.Text = "game Studio Id:";
+            gameStudioIdLabel.Text = "game Studio:";
             // 
             // nameLabel
             // 
@@ -84,9 +88,18 @@ namespace gameMarket
             serverIdLabel.AutoSize = true;
             serverIdLabel.Location = new System.Drawing.Point(12, 83);
             serverIdLabel.Name = "serverIdLabel";
-            serverIdLabel.Size = new System.Drawing.Size(51, 13);
+            serverIdLabel.Size = new System.Drawing.Size(39, 13);
             serverIdLabel.TabIndex = 7;
-            serverIdLabel.Text = "server Id:";
+            serverIdLabel.Text = "server:";
+            // 
+            // priceLabel
+            // 
+            priceLabel.AutoSize = true;
+            priceLabel.Location = new System.Drawing.Point(14, 109);
+            priceLabel.Name = "priceLabel";
+            priceLabel.Size = new System.Drawing.Size(34, 13);
+            priceLabel.TabIndex = 20;
+            priceLabel.Text = "Price:";
             // 
             // dataSet
             // 
@@ -111,7 +124,7 @@ namespace gameMarket
             this.tableAdapterManager.PicturesTableAdapter = null;
             this.tableAdapterManager.placemarksTableAdapter = null;
             this.tableAdapterManager.rolesTableAdapter = null;
-            this.tableAdapterManager.serversTableAdapter = this.serversTableAdapter;
+            this.tableAdapterManager.serversTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = gameMarket.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.user_gameTableAdapter = null;
             this.tableAdapterManager.usersTableAdapter = null;
@@ -120,13 +133,8 @@ namespace gameMarket
             // 
             this.gameStudiosTableAdapter.ClearBeforeFill = true;
             // 
-            // serversTableAdapter
-            // 
-            this.serversTableAdapter.ClearBeforeFill = true;
-            // 
             // nameTextBox
             // 
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gamesBindingSource, "name", true));
             this.nameTextBox.Location = new System.Drawing.Point(99, 54);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(121, 20);
@@ -168,22 +176,6 @@ namespace gameMarket
             this.gameStudiosBindingSource.DataMember = "gameStudios";
             this.gameStudiosBindingSource.DataSource = this.dataSet;
             // 
-            // comboBox_Server
-            // 
-            this.comboBox_Server.DataSource = this.serversBindingSource;
-            this.comboBox_Server.DisplayMember = "location";
-            this.comboBox_Server.FormattingEnabled = true;
-            this.comboBox_Server.Location = new System.Drawing.Point(99, 80);
-            this.comboBox_Server.Name = "comboBox_Server";
-            this.comboBox_Server.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_Server.TabIndex = 12;
-            this.comboBox_Server.ValueMember = "id";
-            // 
-            // serversBindingSource
-            // 
-            this.serversBindingSource.DataMember = "servers";
-            this.serversBindingSource.DataSource = this.dataSet;
-            // 
             // button_SelectImage
             // 
             this.button_SelectImage.Location = new System.Drawing.Point(289, 184);
@@ -212,6 +204,7 @@ namespace gameMarket
             this.button_Cancel.TabIndex = 15;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // openFileDialog1
             // 
@@ -221,15 +214,51 @@ namespace gameMarket
             // 
             this.picturesTableAdapter1.ClearBeforeFill = true;
             // 
+            // numericUpDown_Price
+            // 
+            this.numericUpDown_Price.DecimalPlaces = 2;
+            this.numericUpDown_Price.InterceptArrowKeys = false;
+            this.numericUpDown_Price.Location = new System.Drawing.Point(99, 107);
+            this.numericUpDown_Price.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_Price.Name = "numericUpDown_Price";
+            this.numericUpDown_Price.Size = new System.Drawing.Size(121, 20);
+            this.numericUpDown_Price.TabIndex = 21;
+            // 
+            // comboBox_Server
+            // 
+            this.comboBox_Server.DataSource = this.serversBindingSource;
+            this.comboBox_Server.DisplayMember = "location";
+            this.comboBox_Server.FormattingEnabled = true;
+            this.comboBox_Server.Location = new System.Drawing.Point(99, 81);
+            this.comboBox_Server.Name = "comboBox_Server";
+            this.comboBox_Server.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Server.TabIndex = 22;
+            this.comboBox_Server.ValueMember = "id";
+            // 
+            // serversBindingSource
+            // 
+            this.serversBindingSource.DataMember = "servers";
+            this.serversBindingSource.DataSource = this.dataSet;
+            // 
+            // serversTableAdapter
+            // 
+            this.serversTableAdapter.ClearBeforeFill = true;
+            // 
             // Form_AddGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 213);
+            this.Controls.Add(this.comboBox_Server);
+            this.Controls.Add(this.numericUpDown_Price);
+            this.Controls.Add(priceLabel);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Add);
             this.Controls.Add(this.button_SelectImage);
-            this.Controls.Add(this.comboBox_Server);
             this.Controls.Add(this.comboBox_Studio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox_Logo);
@@ -245,6 +274,7 @@ namespace gameMarket
             ((System.ComponentModel.ISupportInitialize)(this.gamesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameStudiosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Price)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.serversBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -262,14 +292,15 @@ namespace gameMarket
         private System.Windows.Forms.PictureBox pictureBox_Logo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_Studio;
-        private System.Windows.Forms.ComboBox comboBox_Server;
         private System.Windows.Forms.BindingSource gameStudiosBindingSource;
-        private DataSetTableAdapters.serversTableAdapter serversTableAdapter;
-        private System.Windows.Forms.BindingSource serversBindingSource;
         private System.Windows.Forms.Button button_SelectImage;
         private System.Windows.Forms.Button button_Add;
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DataSetTableAdapters.PicturesTableAdapter picturesTableAdapter1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Price;
+        private System.Windows.Forms.ComboBox comboBox_Server;
+        private System.Windows.Forms.BindingSource serversBindingSource;
+        private DataSetTableAdapters.serversTableAdapter serversTableAdapter;
     }
 }
