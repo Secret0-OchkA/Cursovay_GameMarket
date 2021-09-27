@@ -47,6 +47,11 @@ namespace gameMarket
             this.userViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new gameMarket.DataSet();
             this.gamesDataGridView = new System.Windows.Forms.DataGridView();
+            this.pictureDataDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studioNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.location = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gamesViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox_Users = new System.Windows.Forms.GroupBox();
             this.button_Library = new System.Windows.Forms.Button();
@@ -86,11 +91,6 @@ namespace gameMarket
             this.gamesTableAdapter1 = new gameMarket.DataSetTableAdapters.gamesTableAdapter();
             this.picturesTableAdapter1 = new gameMarket.DataSetTableAdapters.PicturesTableAdapter();
             this.serversTableAdapter = new gameMarket.DataSetTableAdapters.serversTableAdapter();
-            this.pictureDataDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studioNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.location = new System.Windows.Forms.DataGridViewTextBoxColumn();
             loginLabel = new System.Windows.Forms.Label();
             passwordLabel = new System.Windows.Forms.Label();
             roleLabel = new System.Windows.Forms.Label();
@@ -282,6 +282,42 @@ namespace gameMarket
             this.gamesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gamesDataGridView.Size = new System.Drawing.Size(498, 220);
             this.gamesDataGridView.TabIndex = 0;
+            // 
+            // pictureDataDataGridViewImageColumn
+            // 
+            this.pictureDataDataGridViewImageColumn.DataPropertyName = "PictureData";
+            this.pictureDataDataGridViewImageColumn.HeaderText = "Logo";
+            this.pictureDataDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.pictureDataDataGridViewImageColumn.Name = "pictureDataDataGridViewImageColumn";
+            this.pictureDataDataGridViewImageColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // studioNameDataGridViewTextBoxColumn
+            // 
+            this.studioNameDataGridViewTextBoxColumn.DataPropertyName = "studioName";
+            this.studioNameDataGridViewTextBoxColumn.HeaderText = "studioName";
+            this.studioNameDataGridViewTextBoxColumn.Name = "studioNameDataGridViewTextBoxColumn";
+            this.studioNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // location
+            // 
+            this.location.DataPropertyName = "location";
+            this.location.HeaderText = "Server";
+            this.location.Name = "location";
+            this.location.ReadOnly = true;
             // 
             // gamesViewBindingSource
             // 
@@ -573,6 +609,7 @@ namespace gameMarket
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gamesViewBindingSource, "name", true));
             this.nameTextBox.Location = new System.Drawing.Point(392, 19);
             this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.ReadOnly = true;
             this.nameTextBox.Size = new System.Drawing.Size(100, 20);
             this.nameTextBox.TabIndex = 11;
             // 
@@ -635,42 +672,6 @@ namespace gameMarket
             // serversTableAdapter
             // 
             this.serversTableAdapter.ClearBeforeFill = true;
-            // 
-            // pictureDataDataGridViewImageColumn
-            // 
-            this.pictureDataDataGridViewImageColumn.DataPropertyName = "PictureData";
-            this.pictureDataDataGridViewImageColumn.HeaderText = "Logo";
-            this.pictureDataDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.pictureDataDataGridViewImageColumn.Name = "pictureDataDataGridViewImageColumn";
-            this.pictureDataDataGridViewImageColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studioNameDataGridViewTextBoxColumn
-            // 
-            this.studioNameDataGridViewTextBoxColumn.DataPropertyName = "studioName";
-            this.studioNameDataGridViewTextBoxColumn.HeaderText = "studioName";
-            this.studioNameDataGridViewTextBoxColumn.Name = "studioNameDataGridViewTextBoxColumn";
-            this.studioNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // location
-            // 
-            this.location.DataPropertyName = "location";
-            this.location.HeaderText = "Server";
-            this.location.Name = "location";
-            this.location.ReadOnly = true;
             // 
             // Form_Admin
             // 

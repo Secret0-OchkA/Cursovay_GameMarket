@@ -12,33 +12,18 @@ namespace gameMarket
 {
     public partial class Form_AddGame : Form
     {
-        public Form_AddGame(Form form)
+        public Form_AddGame(Form_Admin form)
         {
             InitializeComponent();
             parent = form;
             openFileDialog1.Filter = "Изображения|*.png;*.jpg";
         }
 
-        private Form parent;
+        private Form_Admin parent;
 
         private string imageName;
         private string imagePath;
 
-        //private void gamesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        //{
-        //    this.Validate();
-        //    this.gamesBindingSource.EndEdit();
-        //    this.tableAdapterManager.UpdateAll(this.dataSet);
-
-        //}
-
-        //private void gamesBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        //{
-        //    this.Validate();
-        //    this.gamesBindingSource.EndEdit();
-        //    this.tableAdapterManager.UpdateAll(this.dataSet);
-
-        //}
 
         private void Form_AddGame_Load(object sender, EventArgs e)
         {
@@ -73,7 +58,8 @@ namespace gameMarket
         private void Form_AddGame_FormClosing(object sender, FormClosingEventArgs e)
         {
             parent.Enabled = true;
-            parent.Update();
+            parent.Form_Admin_Load(this, new EventArgs());
+            
         }
 
         private void button_Add_Click(object sender, EventArgs e)
@@ -99,6 +85,10 @@ namespace gameMarket
                 gamesTableAdapter.Game_Insert(gameStudio, nameGame, serverId, price);
                 
                 int addedGameId = (int)gamesTableAdapter.GetGameId(nameGame);
+
+                if ((int)picturesTableAdapter1.ExistPicture(imageName) == 1)
+                    throw new Exception("this image is busy");
+
                 picturesTableAdapter1.usp_ImportImage(addedGameId, "name", imagePath, imageName);
 
                 parent.Refresh();
@@ -108,6 +98,7 @@ namespace gameMarket
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                gamesTableAdapter.Game_Delete(nameGame);
             }
         }
 

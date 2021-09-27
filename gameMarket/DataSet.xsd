@@ -186,7 +186,7 @@ WHERE        (gameId = @gameId) AND (placemarkId = @placemarkId)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Exist_User_Placemark" Modifier="Public" Name="Exist_User_Placemark" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Exist_User_Placemark">
+              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Exist_User_Placemark" Modifier="Public" Name="Exist_User_Placemark" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Exist_User_Placemark">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(*) AS Expr1
@@ -199,7 +199,7 @@ WHERE        (gameId = @gameId) AND (placemarkId = @placemarkId)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Insert_Placemark" Modifier="Public" Name="Insert_Placemark" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Insert_Placemark">
+              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Insert_Placemark" Modifier="Public" Name="Insert_Placemark" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Insert_Placemark">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [game-placemark]
@@ -502,16 +502,7 @@ SELECT id, role FROM roles WHERE (id = @id)</CommandText>
               <Mapping SourceColumn="id" DataSetColumn="id" />
               <Mapping SourceColumn="role" DataSetColumn="role" />
             </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectName="gameMarket.dbo.roles" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="TestQuery" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="TestQuery" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="TestQuery">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT id, role FROM dbo.roles</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </Sources>
+            <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="serversTableAdapter" GeneratorDataComponentClassName="serversTableAdapter" Name="servers" UserDataComponentName="serversTableAdapter">
             <MainSource>
@@ -724,7 +715,31 @@ WHERE        (games.name = @gameName)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectName="gameMarket.dbo.usp_ImportImage" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="usp_ImportImage" Modifier="Public" Name="usp_ImportImage" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="usp_ImportImage">
+              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ExistPicture" Modifier="Public" Name="ExistPicture" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ExistPicture">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Expr1
+FROM            Pictures
+WHERE        (picFileName = @pictureName)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="pictureName" ColumnName="picFileName" DataSourceName="gameMarket2.dbo.Pictures" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@pictureName" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="picFileName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetPicture_Data" Modifier="Public" Name="GetPicture_Data" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetPicture_Data">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Expr1
+FROM            Pictures
+WHERE        (PictureData = @pictureData)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="pictureData" ColumnName="PictureData" DataSourceName="gameMarket2.dbo.Pictures" DataTypeServer="varbinary(MAX)" DbType="Binary" Direction="Input" ParameterName="@pictureData" Precision="0" ProviderType="VarBinary" Scale="0" Size="2147483647" SourceColumn="PictureData" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="gameMarketConnectionString (Settings)" DbObjectName="gameMarket.dbo.usp_ImportImage" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="usp_ImportImage" Modifier="Public" Name="usp_ImportImage" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="usp_ImportImage">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.usp_ImportImage</CommandText>
@@ -852,7 +867,7 @@ FROM            users INNER JOIN
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Pictures.PictureData, games.name, games.Price, gameStudios.studioName, servers.location
 FROM            games INNER JOIN
-                         gameStudios ON games.gameStudioId = gameStudios.id INNER JOIN
+                         gameStudios ON games.gameStudioId = gameStudios.id LEFT OUTER JOIN
                          Pictures ON games.id = Pictures.gameId LEFT OUTER JOIN
                          servers ON games.serverId = servers.id</CommandText>
                     <Parameters />
@@ -1129,7 +1144,7 @@ WHERE        ([game-placemark].gameId = @gameId)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:double" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:double" />
               <xs:element name="studioName" msprop:Generator_ColumnVarNameInTable="columnstudioName" msprop:Generator_ColumnPropNameInRow="studioName" msprop:Generator_ColumnPropNameInTable="studioNameColumn" msprop:Generator_UserColumnName="studioName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

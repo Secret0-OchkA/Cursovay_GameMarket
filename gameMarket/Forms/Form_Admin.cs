@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using gameMarket.Forms;
-
+using System.IO;
 
 namespace gameMarket
 {
@@ -25,7 +25,7 @@ namespace gameMarket
         private User userOwner;
         private Form parent;
 
-        private void Form_Admin_Load(object sender, EventArgs e)
+        public void Form_Admin_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet.servers". При необходимости она может быть перемещена или удалена.
             this.serversTableAdapter.Fill(this.dataSet.servers);
@@ -45,6 +45,8 @@ namespace gameMarket
         private string imagePath;
         private string imageName;
 
+        private bool changedImage = false;
+
         private void button_SelectImage_Click(object sender, EventArgs e)
         {
             
@@ -57,6 +59,9 @@ namespace gameMarket
                     imagePath = openFileDialog1.FileName.Replace("\\" + imageName, string.Empty);
 
                     pictureDataPictureBox.Image = new Bitmap(openFileDialog1.FileName);
+                    Bitmap bm = new Bitmap(openFileDialog1.FileName);
+
+                    changedImage = true;
                 }
                 catch
                 {
@@ -120,20 +125,22 @@ namespace gameMarket
                     throw new Exception("no selected game");
 
                 int gameStudio = (int)comboBox_GameStudio.SelectedValue;
-                string gameNameOld = gamesDataGridView.SelectedRows[0].Cells[1].Value.ToString();
-                string gameNameNew = nameTextBox.Text;
-
-                if (this.gamesTableAdapter1.GetGameId(gameNameNew).HasValue)
-                    throw new Exception("this name is busy");
+                string gameName = gamesDataGridView.SelectedRows[0].Cells[1].Value.ToString();
 
                 double price = (double)numericUpDown_Price.Value;
                 int serverId = (int)comboBox_Server.SelectedValue;
-                int? gameId = gamesTableAdapter1.GetGameId(gameNameOld);
+                int? gameId = gamesTableAdapter1.GetGameId(gameName);
 
-                gamesTableAdapter1.Game_Update(gameStudio, gameNameNew, serverId, price, gameNameOld);
-                picturesTableAdapter1.DeletePicture(gameNameNew);
-                picturesTableAdapter1.usp_ImportImage(gameId, "name", imagePath, imageName);
-                
+                gamesTableAdapter1.Game_Update(gameStudio, gameName, serverId, price, gameName);
+
+                if ((int)picturesTableAdapter1.ExistPicture(imageName) == 1)
+                    throw new Exception("this image is busy");
+
+                if (changedImage)
+                {
+                    picturesTableAdapter1.DeletePicture(gameName);
+                    picturesTableAdapter1.usp_ImportImage(gameId, "name", imagePath, imageName);
+                }
 
                 this.gamesViewTableAdapter.Fill(this.dataSet.GamesView);
             }
@@ -142,8 +149,6 @@ namespace gameMarket
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-            
-        
 
         private void button_Ga_Delete_Click(object sender, EventArgs e)
         {
