@@ -98,7 +98,6 @@ namespace gameMarket
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                gamesTableAdapter.Game_Delete(nameGame);
             }
         }
 

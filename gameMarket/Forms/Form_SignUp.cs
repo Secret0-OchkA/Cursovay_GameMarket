@@ -20,7 +20,7 @@ namespace gameMarket
 
         private Form parent;
 
-        private readonly string errorCharsStr = "@#%^?|\\-+/\'\"&`~(){}[]*.,<>: ";
+        private readonly string errorCharsStr = "@#%^?|\\-+/\'\"&`~(){}[]*.,<>:; ";
 
         private readonly int maxLengthLogin = 16;
         private readonly int minLengthLogin = 8;
@@ -55,7 +55,7 @@ namespace gameMarket
                     throw new Exception("login must not contain: " + errorCharsStr);
 
                 if ((int)this.usersTableAdapter1.ExistUser(login) != 0)
-                    throw new Exception("login is busy");
+                    throw new Exception("This login is busy");
 
                 if (password.IndexOfAny(errorCharsStr.ToCharArray()) != -1)
                     throw new Exception("password must not contain: " + errorCharsStr);

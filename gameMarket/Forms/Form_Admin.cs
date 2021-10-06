@@ -73,6 +73,8 @@ namespace gameMarket
         private int maxLengthPassword = 16;
         private int minLengthPassword = 8;
 
+        private readonly string errorCharsStr = "@#%^?|\\-+/\'\"&`~(){}[]*.,<>:; ";
+
         private void button_UsUp_Password_Click(object sender, EventArgs e)
         {
             try
@@ -85,6 +87,9 @@ namespace gameMarket
 
                 if (password.Length > maxLengthPassword || password.Length < minLengthPassword)
                     throw new Exception("password must be from 8 to 16 characters");
+
+                if (password.IndexOfAny(errorCharsStr.ToCharArray()) != -1)
+                    throw new Exception("password must not contain: " + errorCharsStr);
 
                 int role = (int)comboBox_RoleUpdate.SelectedValue;
 
@@ -103,7 +108,7 @@ namespace gameMarket
             try
             {
                 if (usersDataGridView.SelectedRows.Count == 0)
-                    throw new Exception("no selected user");
+                    throw new Exception("there is no selected user");
 
                 string login = textBox_Delete.Text;
 
@@ -122,7 +127,7 @@ namespace gameMarket
             try
             {
                 if (gamesDataGridView.SelectedRows.Count == 0)
-                    throw new Exception("no selected game");
+                    throw new Exception("there is no selected game");
 
                 int gameStudio = (int)comboBox_GameStudio.SelectedValue;
                 string gameName = gamesDataGridView.SelectedRows[0].Cells[1].Value.ToString();

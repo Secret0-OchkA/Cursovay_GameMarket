@@ -4,6 +4,10 @@
 
     partial class DataSet
     {
+        partial class PicturesDataTable
+        {
+        }
+
         partial class ShopDataTable
         {
         }

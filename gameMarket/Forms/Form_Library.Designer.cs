@@ -54,6 +54,8 @@ namespace gameMarket
             this.button_Download = new System.Windows.Forms.Button();
             this.user_gameTableAdapter1 = new gameMarket.DataSetTableAdapters.user_gameTableAdapter();
             this.gamesTableAdapter1 = new gameMarket.DataSetTableAdapters.gamesTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
@@ -202,7 +204,7 @@ namespace gameMarket
             this.comboBox_PlacemarkShop.DataSource = this.placemarksBindingSource;
             this.comboBox_PlacemarkShop.DisplayMember = "placemarker";
             this.comboBox_PlacemarkShop.FormattingEnabled = true;
-            this.comboBox_PlacemarkShop.Location = new System.Drawing.Point(12, 238);
+            this.comboBox_PlacemarkShop.Location = new System.Drawing.Point(50, 238);
             this.comboBox_PlacemarkShop.Name = "comboBox_PlacemarkShop";
             this.comboBox_PlacemarkShop.Size = new System.Drawing.Size(121, 21);
             this.comboBox_PlacemarkShop.TabIndex = 6;
@@ -219,7 +221,7 @@ namespace gameMarket
             this.comboBox_PlacemarkLibrary.DataSource = this.placemarksBindingSource1;
             this.comboBox_PlacemarkLibrary.DisplayMember = "placemarker";
             this.comboBox_PlacemarkLibrary.FormattingEnabled = true;
-            this.comboBox_PlacemarkLibrary.Location = new System.Drawing.Point(385, 238);
+            this.comboBox_PlacemarkLibrary.Location = new System.Drawing.Point(420, 238);
             this.comboBox_PlacemarkLibrary.Name = "comboBox_PlacemarkLibrary";
             this.comboBox_PlacemarkLibrary.Size = new System.Drawing.Size(121, 21);
             this.comboBox_PlacemarkLibrary.TabIndex = 7;
@@ -237,7 +239,7 @@ namespace gameMarket
             // 
             // button_Buy
             // 
-            this.button_Buy.Location = new System.Drawing.Point(139, 236);
+            this.button_Buy.Location = new System.Drawing.Point(177, 238);
             this.button_Buy.Name = "button_Buy";
             this.button_Buy.Size = new System.Drawing.Size(75, 23);
             this.button_Buy.TabIndex = 8;
@@ -247,7 +249,7 @@ namespace gameMarket
             // 
             // button_Download
             // 
-            this.button_Download.Location = new System.Drawing.Point(512, 236);
+            this.button_Download.Location = new System.Drawing.Point(547, 238);
             this.button_Download.Name = "button_Download";
             this.button_Download.Size = new System.Drawing.Size(75, 23);
             this.button_Download.TabIndex = 9;
@@ -263,11 +265,31 @@ namespace gameMarket
             // 
             this.gamesTableAdapter1.ClearBeforeFill = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 241);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Filter:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(382, 241);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Filter:";
+            // 
             // Form_Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 315);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button_Download);
             this.Controls.Add(this.button_Buy);
             this.Controls.Add(this.comboBox_PlacemarkLibrary);
@@ -288,6 +310,7 @@ namespace gameMarket
             ((System.ComponentModel.ISupportInitialize)(this.placemarksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placemarksBindingSource1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -317,5 +340,7 @@ namespace gameMarket
         private System.Windows.Forms.Button button_Download;
         private DataSetTableAdapters.user_gameTableAdapter user_gameTableAdapter1;
         private DataSetTableAdapters.gamesTableAdapter gamesTableAdapter1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -38,7 +38,7 @@ namespace gameMarket
 
                 //проверка на правильно веденный логин
                 if (user.Rows.Count == 0)
-                    throw new Exception("Incorret Login");
+                    throw new Exception("Invalid login");
 
                 string userBd = user.Rows[0][0].ToString(); //login
                 string passwordBd = user.Rows[0][1].ToString(); //password
